@@ -10,10 +10,12 @@ using System.Windows.Forms;
 
 namespace CrystalCollector
 {
-    public partial class Form1 : Form
+    public partial class FrmCrystal : Form
     {
-        public Form1()
+        public FrmCrystal()
         {
+            Graphics g; //declare a graphics object called g
+            Collector collector1 = new Collector(); //create the object, collector1
             InitializeComponent();
         }
     }
