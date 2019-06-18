@@ -11,24 +11,29 @@ namespace CrystalCollector
     {
         // declare fields to use in the class
         public int x, y, width, height;//variables for the rectangle
-        private Image collectorImage;//variable for the planet's image
+        public Image collectorImage;//variable for the planet's image
 
-        private Rectangle collectorRec;//variable for a rectangle to place our image in
+        public Rectangle collectorRec;//variable for a rectangle to place our image in
 
         //Create a constructor (initialises the values of the fields)
         public Collector()
         {
             x = 10;
             y = 10;
-            width = 20;
-            height = 20;
+            width = 40;
+            height = 50;
             collectorImage = Properties.Resources.Collector1;
             collectorRec = new Rectangle(x, y, width, height);
         }
-        // Methods for the Planet class
-        public void drawPlanet(Graphics g)
+        // Methods for the Collector class
+        public void drawCollector(Graphics g)
         {
             g.DrawImage(collectorImage, collectorRec);
+        }
+        public void moveCollector(int mouseX, int mouseY)
+        {
+            collectorRec.X = mouseX - (collectorRec.Width/2);
+            collectorRec.Y = mouseY - (collectorRec.Height / 2);
         }
     }
 }

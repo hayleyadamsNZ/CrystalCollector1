@@ -26,5 +26,15 @@ namespace CrystalCollector
             //call the Planet class's DrawPlanet method to draw the image planet1 
             collector1.drawCollector(g);
         }
+
+        private void PanelGame_MouseMove(object sender, MouseEventArgs e)
+        {
+            collector1.moveCollector(e.X, e.Y);
+        }
+
+        private void tmrCollector_Tick(object sender, EventArgs e)
+        {
+            Invalidate();
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PanelGame = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,6 +37,7 @@
             this.TextName = new System.Windows.Forms.TextBox();
             this.LabelScore = new System.Windows.Forms.Label();
             this.TextLives = new System.Windows.Forms.TextBox();
+            this.tmrCollector = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // PanelGame
@@ -47,6 +49,7 @@
             this.PanelGame.Size = new System.Drawing.Size(680, 470);
             this.PanelGame.TabIndex = 0;
             this.PanelGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelGame_Paint);
+            this.PanelGame.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelGame_MouseMove);
             // 
             // label1
             // 
@@ -116,6 +119,11 @@
             this.TextLives.Size = new System.Drawing.Size(50, 33);
             this.TextLives.TabIndex = 7;
             // 
+            // tmrCollector
+            // 
+            this.tmrCollector.Enabled = true;
+            this.tmrCollector.Tick += new System.EventHandler(this.tmrCollector_Tick);
+            // 
             // FrmCrystal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +156,7 @@
         private System.Windows.Forms.TextBox TextName;
         private System.Windows.Forms.Label LabelScore;
         private System.Windows.Forms.TextBox TextLives;
+        private System.Windows.Forms.Timer tmrCollector;
     }
 }
 
