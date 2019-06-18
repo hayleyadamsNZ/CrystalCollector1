@@ -12,11 +12,19 @@ namespace CrystalCollector
 {
     public partial class FrmCrystal : Form
     {
+        Graphics g; //declare a graphics object called g
+        Collector collector1 = new Collector(); //create the object, collector1
         public FrmCrystal()
         {
-            Graphics g; //declare a graphics object called g
-            Collector collector1 = new Collector(); //create the object, collector1
             InitializeComponent();
+        }
+
+        private void PanelGame_Paint(object sender, PaintEventArgs e)
+        {
+            //get the graphics used to paint on the panel control
+            g = e.Graphics;
+            //call the Planet class's DrawPlanet method to draw the image planet1 
+            collector1.drawCollector(g);
         }
     }
 }
