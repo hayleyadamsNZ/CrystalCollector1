@@ -38,11 +38,13 @@
             this.LabelScore = new System.Windows.Forms.Label();
             this.TextLives = new System.Windows.Forms.TextBox();
             this.tmrCollector = new System.Windows.Forms.Timer(this.components);
+            this.TmrAmethyst = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // PanelGame
             // 
             this.PanelGame.BackColor = System.Drawing.Color.Black;
+            this.PanelGame.Cursor = System.Windows.Forms.Cursors.Default;
             this.PanelGame.ForeColor = System.Drawing.Color.Black;
             this.PanelGame.Location = new System.Drawing.Point(2, 192);
             this.PanelGame.Name = "PanelGame";
@@ -122,7 +124,13 @@
             // tmrCollector
             // 
             this.tmrCollector.Enabled = true;
+            this.tmrCollector.Interval = 10;
             this.tmrCollector.Tick += new System.EventHandler(this.tmrCollector_Tick);
+            // 
+            // TmrAmethyst
+            // 
+            this.TmrAmethyst.Enabled = true;
+            this.TmrAmethyst.Tick += new System.EventHandler(this.TmrAmethyst_Tick);
             // 
             // FrmCrystal
             // 
@@ -138,6 +146,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PanelGame);
+            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "FrmCrystal";
             this.Text = "Crystal Collector 1";
@@ -157,6 +166,7 @@
         private System.Windows.Forms.Label LabelScore;
         private System.Windows.Forms.TextBox TextLives;
         private System.Windows.Forms.Timer tmrCollector;
+        private System.Windows.Forms.Timer TmrAmethyst;
     }
 }
 

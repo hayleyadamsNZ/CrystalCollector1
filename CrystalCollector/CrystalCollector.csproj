@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Amethyst.cs" />
     <Compile Include="Collector.cs" />
     <Compile Include="FormCrystal.cs">
       <SubType>Form</SubType>
@@ -82,6 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Collector1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Purple.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\purple.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
