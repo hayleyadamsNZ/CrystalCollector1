@@ -51,6 +51,7 @@
             this.PanelGame.Size = new System.Drawing.Size(680, 470);
             this.PanelGame.TabIndex = 0;
             this.PanelGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelGame_Paint);
+            this.PanelGame.MouseHover += new System.EventHandler(this.PanelGame_MouseHover);
             this.PanelGame.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelGame_MouseMove);
             // 
             // label1

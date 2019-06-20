@@ -16,6 +16,7 @@ namespace CrystalCollector
         public Rectangle amethystRec;//variable for a rectangle to place our image in
         public int score;
         //Create a constructor (initialises the values of the fields)
+
         public Amethyst(int spacing)
         {
             x = spacing;
@@ -33,7 +34,6 @@ namespace CrystalCollector
         }
         public void moveAmethyst()
         {
-            y += 5;
             amethystRec.Location = new Point(x, y);
             if (amethystRec.Location.Y > 470)
             {
