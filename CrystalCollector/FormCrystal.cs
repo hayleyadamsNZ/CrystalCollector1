@@ -17,6 +17,9 @@ namespace CrystalCollector
         Collector collector1 = new Collector(); //create the object, collector1
         Amethyst[] amethyst = new Amethyst[7]; //create the object, amethyst
         Random yspeed = new Random();
+        Random xspeed = new Random();
+        Random spawnx = new Random();
+        Random spawny = new Random();
         int score, lives;
 
         public FrmCrystal()
@@ -25,7 +28,9 @@ namespace CrystalCollector
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PanelGame, new object[] { true });
             for (int i = 0; i < 7; i++)
             {
-                int x = 10 + (i * 55);
+                int x = spawnx.Next(1, 660);
+                amethyst[i].x = x;
+
                 amethyst[i] = new Amethyst(x);
             }
         }
@@ -38,11 +43,15 @@ namespace CrystalCollector
             collector1.drawCollector(g);
             for (int i = 0; i < 7; i++)
             {
-                // generate a random number from 5 to 20 and put it in rndmspeed
-                int rndmspeed = yspeed.Next(1, 5);
-                amethyst[i].y += rndmspeed;
                 //call the Amethyst class's drawAmethyst method to draw the images
                 amethyst[i].drawAmethyst(g);
+                // generate a random number from 5 to 20 and put it in rndmspeed
+                int rndmyspeed = yspeed.Next(1, 5);
+                amethyst[i].y += rndmyspeed;
+                int rndmxspeed = xspeed.Next(1, 5);
+                amethyst[i].x += rndmxspeed;
+
+
             }
 
         }
@@ -68,7 +77,6 @@ namespace CrystalCollector
             {
                 amethyst[i].moveAmethyst();
             }
-            PanelGame.Invalidate();//makes the paint event fire to redraw the panel
         }
     }
 }
