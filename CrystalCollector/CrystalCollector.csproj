@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Amethyst.cs" />
+    <Compile Include="Citrine.cs" />
     <Compile Include="Collector.cs" />
     <Compile Include="FormCrystal.cs">
       <SubType>Form</SubType>

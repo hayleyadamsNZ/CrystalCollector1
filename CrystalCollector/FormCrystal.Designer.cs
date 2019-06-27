@@ -39,6 +39,7 @@
             this.TextLives = new System.Windows.Forms.TextBox();
             this.tmrCollector = new System.Windows.Forms.Timer(this.components);
             this.TmrAmethyst = new System.Windows.Forms.Timer(this.components);
+            this.TmrCitrine = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // PanelGame
@@ -133,6 +134,11 @@
             this.TmrAmethyst.Enabled = true;
             this.TmrAmethyst.Tick += new System.EventHandler(this.TmrAmethyst_Tick);
             // 
+            // TmrCitrine
+            // 
+            this.TmrCitrine.Enabled = true;
+            this.TmrCitrine.Tick += new System.EventHandler(this.TmrCitrine_Tick);
+            // 
             // FrmCrystal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,6 +174,7 @@
         private System.Windows.Forms.TextBox TextLives;
         private System.Windows.Forms.Timer tmrCollector;
         private System.Windows.Forms.Timer TmrAmethyst;
+        private System.Windows.Forms.Timer TmrCitrine;
     }
 }
 

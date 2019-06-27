@@ -16,10 +16,12 @@ namespace CrystalCollector
         Graphics g; //declare a graphics object called g
         Collector collector1 = new Collector(); //create the object, collector1
         Amethyst[] amethyst = new Amethyst[7]; //create the object, amethyst
+        Citrine[] citrine = new Citrine[7];
         Random yspeed = new Random();
         Random xspeed = new Random();
+        Random yspeeda = new Random();
+        Random xspeeda = new Random();
         Random spawnx = new Random();
-        Random spawny = new Random();
         int score, lives;
 
         public FrmCrystal()
@@ -28,10 +30,9 @@ namespace CrystalCollector
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PanelGame, new object[] { true });
             for (int i = 0; i < 7; i++)
             {
-                int x = spawnx.Next(1, 660);
-                amethyst[i].x = x;
-
+                int x = 10 + (i * 90);
                 amethyst[i] = new Amethyst(x);
+                citrine[i] = new Citrine(x);
             }
         }
 
@@ -45,13 +46,16 @@ namespace CrystalCollector
             {
                 //call the Amethyst class's drawAmethyst method to draw the images
                 amethyst[i].drawAmethyst(g);
+                citrine[i].drawCitrine(g);
                 // generate a random number from 5 to 20 and put it in rndmspeed
                 int rndmyspeed = yspeed.Next(1, 5);
                 amethyst[i].y += rndmyspeed;
-                int rndmxspeed = xspeed.Next(1, 5);
+                int rndmyspeeda = yspeeda.Next(1, 5);
+                citrine[i].y -= rndmyspeeda;
+                int rndmxspeed = xspeed.Next(1, 3);
                 amethyst[i].x += rndmxspeed;
-
-
+                int rndmxspeeda = xspeeda.Next(1, 3);
+                citrine[i].x -= rndmxspeeda;
             }
 
         }
@@ -69,6 +73,14 @@ namespace CrystalCollector
         private void PanelGame_MouseHover(object sender, EventArgs e)
         {
 
+        }
+
+        private void TmrCitrine_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                citrine[i].moveCitrine();
+            }
         }
 
         private void TmrAmethyst_Tick(object sender, EventArgs e)

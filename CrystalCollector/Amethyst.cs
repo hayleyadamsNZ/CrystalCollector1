@@ -31,8 +31,6 @@ namespace CrystalCollector
         {
             amethystRec = new Rectangle(x, y, width, height);
             g.DrawImage(amethystImage, amethystRec);
-            x = xpos;
-            y = ypos;
         }
         public void moveAmethyst()
         {
@@ -42,17 +40,7 @@ namespace CrystalCollector
                 y = 20;
                 amethystRec.Location = new Point(x, y);
             }
-            if (amethystRec.Location.Y < 1)
-            {
-                y = 20;
-                amethystRec.Location = new Point(x, y);
-            }
             if (amethystRec.Location.X > 680)
-            {
-                x = 20;
-                amethystRec.Location = new Point(x, y);
-            }
-            if (amethystRec.Location.X < 1)
             {
                 x = 20;
                 amethystRec.Location = new Point(x, y);
