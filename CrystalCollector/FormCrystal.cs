@@ -17,10 +17,13 @@ namespace CrystalCollector
         Collector collector1 = new Collector(); //create the object, collector1
         Amethyst[] amethyst = new Amethyst[7]; //create the object, amethyst
         Citrine[] citrine = new Citrine[7];
+        Rosequartz[] rosequartz = new Rosequartz[7];
         Random yspeed = new Random();
         Random xspeed = new Random();
         Random yspeeda = new Random();
         Random xspeeda = new Random();
+        Random yspeedb = new Random();
+        Random xspeedb = new Random();
         Random spawnx = new Random();
         int score, lives;
 
@@ -33,6 +36,7 @@ namespace CrystalCollector
                 int x = 10 + (i * 90);
                 amethyst[i] = new Amethyst(x);
                 citrine[i] = new Citrine(x);
+                rosequartz[i] = new Rosequartz(x);
             }
         }
 
@@ -47,6 +51,7 @@ namespace CrystalCollector
                 //call the Amethyst class's drawAmethyst method to draw the images
                 amethyst[i].drawAmethyst(g);
                 citrine[i].drawCitrine(g);
+                rosequartz[i].drawRosequartz(g);
                 // generate a random number from 5 to 20 and put it in rndmspeed
                 int rndmyspeed = yspeed.Next(1, 5);
                 amethyst[i].y += rndmyspeed;
