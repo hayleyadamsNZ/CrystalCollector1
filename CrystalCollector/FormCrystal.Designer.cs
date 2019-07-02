@@ -40,6 +40,7 @@
             this.tmrCollector = new System.Windows.Forms.Timer(this.components);
             this.TmrAmethyst = new System.Windows.Forms.Timer(this.components);
             this.TmrCitrine = new System.Windows.Forms.Timer(this.components);
+            this.TmrRose = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // PanelGame
@@ -139,6 +140,11 @@
             this.TmrCitrine.Enabled = true;
             this.TmrCitrine.Tick += new System.EventHandler(this.TmrCitrine_Tick);
             // 
+            // TmrRose
+            // 
+            this.TmrRose.Enabled = true;
+            this.TmrRose.Tick += new System.EventHandler(this.TmrRose_Tick);
+            // 
             // FrmCrystal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,6 +181,7 @@
         private System.Windows.Forms.Timer tmrCollector;
         private System.Windows.Forms.Timer TmrAmethyst;
         private System.Windows.Forms.Timer TmrCitrine;
+        private System.Windows.Forms.Timer TmrRose;
     }
 }
 

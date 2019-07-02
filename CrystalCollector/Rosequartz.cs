@@ -19,30 +19,25 @@ namespace CrystalCollector
 
         public Rosequartz(int spacing)
         {
-            x = spacing;
-            y = 450;
+            x = 20;
+            y = spacing;
             width = 20;
             height = 20;
             roseImage = Image.FromFile("pink.png");
             roseRec = new Rectangle(x, y, width, height);
         }
         // Methods for the Planet class
-        public void drawCitrine(Graphics g)
+        public void drawRosequartz(Graphics g)
         {
             roseRec = new Rectangle(x, y, width, height);
             g.DrawImage(roseImage, roseRec);
         }
-        public void moveCitrine()
+        public void moveRosequartz()
         {
             roseRec.Location = new Point(x, y);
-            if (roseRec.Location.Y < 1)
+            if (roseRec.Location.X > 670)
             {
-                y = 450;
-                roseRec.Location = new Point(x, y);
-            }
-            if (roseRec.Location.X < 1)
-            {
-                x = 670;
+                x = 20;
                 roseRec.Location = new Point(x, y);
             }
         }

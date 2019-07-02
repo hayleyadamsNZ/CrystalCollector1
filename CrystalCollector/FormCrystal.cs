@@ -15,9 +15,9 @@ namespace CrystalCollector
     {
         Graphics g; //declare a graphics object called g
         Collector collector1 = new Collector(); //create the object, collector1
-        Amethyst[] amethyst = new Amethyst[7]; //create the object, amethyst
-        Citrine[] citrine = new Citrine[7];
-        Rosequartz[] rosequartz = new Rosequartz[7];
+        Amethyst[] amethyst = new Amethyst[5]; //create the object, amethyst
+        Citrine[] citrine = new Citrine[5];
+        Rosequartz[] rosequartz = new Rosequartz[5];
         Random yspeed = new Random();
         Random xspeed = new Random();
         Random yspeeda = new Random();
@@ -31,7 +31,7 @@ namespace CrystalCollector
         {
             InitializeComponent();
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PanelGame, new object[] { true });
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 5; i++)
             {
                 int x = 10 + (i * 90);
                 amethyst[i] = new Amethyst(x);
@@ -46,7 +46,7 @@ namespace CrystalCollector
             g = e.Graphics;
             //call the Planet class's DrawCollector method to draw the image collector1 
             collector1.drawCollector(g);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 5; i++)
             {
                 //call the Amethyst class's drawAmethyst method to draw the images
                 amethyst[i].drawAmethyst(g);
@@ -57,10 +57,13 @@ namespace CrystalCollector
                 amethyst[i].y += rndmyspeed;
                 int rndmyspeeda = yspeeda.Next(1, 5);
                 citrine[i].y -= rndmyspeeda;
+
                 int rndmxspeed = xspeed.Next(1, 3);
                 amethyst[i].x += rndmxspeed;
                 int rndmxspeeda = xspeeda.Next(1, 3);
                 citrine[i].x -= rndmxspeeda;
+                int rndmxspeedb = xspeedb.Next(1, 5);
+                rosequartz[i].x += rndmxspeedb;
             }
 
         }
@@ -82,15 +85,23 @@ namespace CrystalCollector
 
         private void TmrCitrine_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 5; i++)
             {
                 citrine[i].moveCitrine();
             }
         }
 
+        private void TmrRose_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                rosequartz[i].moveRosequartz();
+            }
+        }
+
         private void TmrAmethyst_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 5; i++)
             {
                 amethyst[i].moveAmethyst();
             }
