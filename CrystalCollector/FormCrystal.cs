@@ -29,6 +29,7 @@ namespace CrystalCollector
 
         public FrmCrystal()
         {
+            score = 0;
             InitializeComponent();
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PanelGame, new object[] { true });
             for (int i = 0; i < 5; i++)
@@ -80,10 +81,17 @@ namespace CrystalCollector
 
         private void PanelGame_MouseHover(object sender, EventArgs e)
         {
-
+            int diffX = e.X - amethyst.amethystRec.X;
+            int diffY = e.Y - amethyst.amethystRec.Y;
+            double length = Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
+            if (length < 25)
+            {
+                score++;//add 1 to the score
+                LabelScore.Text = score.ToString();// display the score
+            }
         }
 
-        private void TmrCitrine_Tick(object sender, EventArgs e)
+            private void TmrCitrine_Tick(object sender, EventArgs e)
         {
             for (int i = 0; i < 5; i++)
             {
