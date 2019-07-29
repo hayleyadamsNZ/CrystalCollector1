@@ -25,7 +25,7 @@ namespace CrystalCollector
         Random yspeedb = new Random();
         Random xspeedb = new Random();
         Random spawnx = new Random();
-        int score, lives;
+        int score, lives, diffX, diffY;
 
         public FrmCrystal()
         {
@@ -79,19 +79,54 @@ namespace CrystalCollector
             PanelGame.Invalidate();
         }
 
-        private void PanelGame_MouseHover(object sender, EventArgs e)
+        private void PanelGame_MouseDown_1(object sender, MouseEventArgs e)
         {
-            int diffX = e.X - amethyst.amethystRec.X;
-            int diffY = e.Y - amethyst.amethystRec.Y;
-            double length = Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
-            if (length < 25)
+            foreach (Amethyst a in amethyst)
             {
-                score++;//add 1 to the score
-                LabelScore.Text = score.ToString();// display the score
+                if (collector1.collectorRec.IntersectsWith(a.amethystRec))
+                {
+                    score++;//add 1 to the score
+                    LabelScore.Text = score.ToString();// display the score
+                }
+            }
+            foreach (Citrine a in citrine)
+            {
+                if (collector1.collectorRec.IntersectsWith(a.citrineRec))
+                {
+                    score++;//add 1 to the score
+                    LabelScore.Text = score.ToString();// display the score
+                }
+            }
+            foreach (Rosequartz a in rosequartz)
+            {
+                if (collector1.collectorRec.IntersectsWith(a.roseRec))
+                {
+                    score++;//add 1 to the score
+                    LabelScore.Text = score.ToString();// display the score
+                }
             }
         }
 
-            private void TmrCitrine_Tick(object sender, EventArgs e)
+        private void Menu_Start_Click(object sender, EventArgs e)
+        {
+            score = 0;
+            tmrCollector.Start();
+            TmrAmethyst.Start();
+            TmrCitrine.Start();
+            TmrRose.Start();
+        }
+
+        private void Menu_Stop_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void FrmCrystal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TmrCitrine_Tick(object sender, EventArgs e)
         {
             for (int i = 0; i < 5; i++)
             {

@@ -41,6 +41,10 @@
             this.TmrAmethyst = new System.Windows.Forms.Timer(this.components);
             this.TmrCitrine = new System.Windows.Forms.Timer(this.components);
             this.TmrRose = new System.Windows.Forms.Timer(this.components);
+            this.Menu = new System.Windows.Forms.MenuStrip();
+            this.Menu_Start = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Stop = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelGame
@@ -53,7 +57,7 @@
             this.PanelGame.Size = new System.Drawing.Size(680, 470);
             this.PanelGame.TabIndex = 0;
             this.PanelGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelGame_Paint);
-            this.PanelGame.MouseHover += new System.EventHandler(this.PanelGame_MouseHover);
+            this.PanelGame.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelGame_MouseDown_1);
             this.PanelGame.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelGame_MouseMove);
             // 
             // label1
@@ -92,9 +96,9 @@
             this.label4.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(563, 91);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 25);
+            this.label4.Size = new System.Drawing.Size(56, 25);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Lives";
+            this.label4.Text = "Time";
             // 
             // TextName
             // 
@@ -126,24 +130,45 @@
             // 
             // tmrCollector
             // 
-            this.tmrCollector.Enabled = true;
             this.tmrCollector.Interval = 10;
             this.tmrCollector.Tick += new System.EventHandler(this.tmrCollector_Tick);
             // 
             // TmrAmethyst
             // 
-            this.TmrAmethyst.Enabled = true;
             this.TmrAmethyst.Tick += new System.EventHandler(this.TmrAmethyst_Tick);
             // 
             // TmrCitrine
             // 
-            this.TmrCitrine.Enabled = true;
             this.TmrCitrine.Tick += new System.EventHandler(this.TmrCitrine_Tick);
             // 
             // TmrRose
             // 
-            this.TmrRose.Enabled = true;
             this.TmrRose.Tick += new System.EventHandler(this.TmrRose_Tick);
+            // 
+            // Menu
+            // 
+            this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu_Start,
+            this.Menu_Stop});
+            this.Menu.Location = new System.Drawing.Point(0, 0);
+            this.Menu.Name = "Menu";
+            this.Menu.Size = new System.Drawing.Size(684, 24);
+            this.Menu.TabIndex = 8;
+            this.Menu.Text = "Menu";
+            // 
+            // Menu_Start
+            // 
+            this.Menu_Start.Name = "Menu_Start";
+            this.Menu_Start.Size = new System.Drawing.Size(43, 20);
+            this.Menu_Start.Text = "Start";
+            this.Menu_Start.Click += new System.EventHandler(this.Menu_Start_Click);
+            // 
+            // Menu_Stop
+            // 
+            this.Menu_Stop.Name = "Menu_Stop";
+            this.Menu_Stop.Size = new System.Drawing.Size(43, 20);
+            this.Menu_Stop.Text = "Stop";
+            this.Menu_Stop.Click += new System.EventHandler(this.Menu_Stop_Click);
             // 
             // FrmCrystal
             // 
@@ -159,10 +184,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PanelGame);
+            this.Controls.Add(this.Menu);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Black;
+            this.MainMenuStrip = this.Menu;
             this.Name = "FrmCrystal";
             this.Text = "Crystal Collector 1";
+            this.Load += new System.EventHandler(this.FrmCrystal_Load);
+            this.Menu.ResumeLayout(false);
+            this.Menu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,6 +212,9 @@
         private System.Windows.Forms.Timer TmrAmethyst;
         private System.Windows.Forms.Timer TmrCitrine;
         private System.Windows.Forms.Timer TmrRose;
+        private System.Windows.Forms.MenuStrip Menu;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Start;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Stop;
     }
 }
 
