@@ -25,6 +25,7 @@ namespace CrystalCollector
         Random yspeedb = new Random();
         Random xspeedb = new Random();
         Random spawnx = new Random();
+        Random spawny = new Random();
         int score, lives, diffX, diffY;
 
         public FrmCrystal()
@@ -81,12 +82,16 @@ namespace CrystalCollector
 
         private void PanelGame_MouseDown_1(object sender, MouseEventArgs e)
         {
+            int xplace = spawnx.Next(10, 670);
+            int yplace = spawny.Next(10, 460);
             foreach (Amethyst a in amethyst)
             {
                 if (collector1.collectorRec.IntersectsWith(a.amethystRec))
                 {
                     score++;//add 1 to the score
                     LabelScore.Text = score.ToString();// display the score
+                    a.y = 10;
+                    a.x = xplace; 
                 }
             }
             foreach (Citrine a in citrine)
@@ -95,6 +100,8 @@ namespace CrystalCollector
                 {
                     score++;//add 1 to the score
                     LabelScore.Text = score.ToString();// display the score
+                    a.y = 450;
+                    a.x = xplace;
                 }
             }
             foreach (Rosequartz a in rosequartz)
@@ -103,6 +110,8 @@ namespace CrystalCollector
                 {
                     score++;//add 1 to the score
                     LabelScore.Text = score.ToString();// display the score
+                    a.x = 10;
+                    a.y = yplace;
                 }
             }
         }
