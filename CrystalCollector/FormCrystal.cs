@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CrystalCollector
@@ -27,6 +28,7 @@ namespace CrystalCollector
         Random spawnx = new Random();
         Random spawny = new Random();
         int score, lives, diffX, diffY;
+        string collectorName;
 
         public FrmCrystal()
         {
@@ -132,6 +134,26 @@ namespace CrystalCollector
 
         private void FrmCrystal_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void NameBtn_Click(object sender, EventArgs e)
+        {
+            collectorName = TextName.Text;
+            if (Regex.IsMatch(collectorName, @"^[a-zA-Z]+$"))//checks playerName for letters
+            {
+                //if playerName valid (only letters) 
+                MessageBox.Show("Valid name, you can now start the game.");
+            }
+            else
+            {
+                //invalid playerName, clear txtName and focus on it to try again
+                MessageBox.Show("NOT VALID. Please enter a name using ONLY letters.");
+                TextName.Clear();
+
+                TextName.Focus();
+
+            }
 
         }
 
