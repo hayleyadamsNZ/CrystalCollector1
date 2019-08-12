@@ -46,6 +46,10 @@
             this.NameBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.LblTime = new System.Windows.Forms.Label();
+            this.TmrTime = new System.Windows.Forms.Timer(this.components);
+            this.BtnTime = new System.Windows.Forms.Button();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +80,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(273, 24);
+            this.label2.Location = new System.Drawing.Point(224, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(188, 25);
             this.label2.TabIndex = 2;
@@ -86,7 +90,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(422, 127);
+            this.label3.Location = new System.Drawing.Point(391, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 25);
             this.label3.TabIndex = 3;
@@ -96,7 +100,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(553, 24);
+            this.label4.Location = new System.Drawing.Point(482, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 25);
             this.label4.TabIndex = 4;
@@ -105,7 +109,7 @@
             // TextName
             // 
             this.TextName.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextName.Location = new System.Drawing.Point(278, 52);
+            this.TextName.Location = new System.Drawing.Point(229, 52);
             this.TextName.Name = "TextName";
             this.TextName.Size = new System.Drawing.Size(112, 33);
             this.TextName.TabIndex = 5;
@@ -116,7 +120,7 @@
             this.LabelScore.BackColor = System.Drawing.Color.White;
             this.LabelScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LabelScore.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelScore.Location = new System.Drawing.Point(360, 119);
+            this.LabelScore.Location = new System.Drawing.Point(464, 119);
             this.LabelScore.Name = "LabelScore";
             this.LabelScore.Size = new System.Drawing.Size(25, 27);
             this.LabelScore.TabIndex = 6;
@@ -169,7 +173,7 @@
             this.NameBtn.BackColor = System.Drawing.Color.Black;
             this.NameBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameBtn.ForeColor = System.Drawing.Color.White;
-            this.NameBtn.Location = new System.Drawing.Point(396, 52);
+            this.NameBtn.Location = new System.Drawing.Point(347, 52);
             this.NameBtn.Name = "NameBtn";
             this.NameBtn.Size = new System.Drawing.Size(65, 33);
             this.NameBtn.TabIndex = 9;
@@ -192,14 +196,52 @@
             this.comboBox1.Font = new System.Drawing.Font("Orator Std", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "30 Seconds",
-            "60 Seconds",
-            "90 Seconds"});
-            this.comboBox1.Location = new System.Drawing.Point(502, 52);
+            "30",
+            "60",
+            "90"});
+            this.comboBox1.Location = new System.Drawing.Point(445, 52);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(170, 25);
             this.comboBox1.TabIndex = 13;
             this.comboBox1.Text = "Select Time Limit";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Orator Std", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(537, 91);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 21);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Time Left";
+            // 
+            // LblTime
+            // 
+            this.LblTime.AutoSize = true;
+            this.LblTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblTime.Font = new System.Drawing.Font("Orator Std", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTime.Location = new System.Drawing.Point(576, 121);
+            this.LblTime.Name = "LblTime";
+            this.LblTime.Size = new System.Drawing.Size(22, 23);
+            this.LblTime.TabIndex = 16;
+            this.LblTime.Text = "-";
+            // 
+            // TmrTime
+            // 
+            this.TmrTime.Interval = 1000;
+            this.TmrTime.Tick += new System.EventHandler(this.TmrTime_Tick);
+            // 
+            // BtnTime
+            // 
+            this.BtnTime.Font = new System.Drawing.Font("Orator Std", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnTime.Location = new System.Drawing.Point(621, 52);
+            this.BtnTime.Name = "BtnTime";
+            this.BtnTime.Size = new System.Drawing.Size(50, 25);
+            this.BtnTime.TabIndex = 17;
+            this.BtnTime.Text = "Ok";
+            this.BtnTime.UseVisualStyleBackColor = true;
+            this.BtnTime.Click += new System.EventHandler(this.BtnTime_Click);
             // 
             // FrmCrystal
             // 
@@ -207,6 +249,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.BtnTime);
+            this.Controls.Add(this.LblTime);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.NameBtn);
@@ -223,7 +268,6 @@
             this.MainMenuStrip = this.Menu;
             this.Name = "FrmCrystal";
             this.Text = "Crystal Collector 1";
-            this.Load += new System.EventHandler(this.FrmCrystal_Load);
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
             this.ResumeLayout(false);
@@ -250,6 +294,10 @@
         private System.Windows.Forms.Button NameBtn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label LblTime;
+        private System.Windows.Forms.Timer TmrTime;
+        private System.Windows.Forms.Button BtnTime;
     }
 }
 

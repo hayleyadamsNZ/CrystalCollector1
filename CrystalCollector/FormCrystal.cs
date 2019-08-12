@@ -27,8 +27,9 @@ namespace CrystalCollector
         Random xspeedb = new Random();
         Random spawnx = new Random();
         Random spawny = new Random();
-        int score, lives, diffX, diffY;
+        int score, lives, diffX, diffY,time;
         string collectorName;
+        string timelimit;
 
         public FrmCrystal()
         {
@@ -42,6 +43,9 @@ namespace CrystalCollector
                 citrine[i] = new Citrine(x);
                 rosequartz[i] = new Rosequartz(x);
             }
+        }
+        private void FrmCrystal_Load(object sender, EventArgs e)
+        {
         }
 
         private void PanelGame_Paint(object sender, PaintEventArgs e)
@@ -125,16 +129,14 @@ namespace CrystalCollector
             TmrAmethyst.Start();
             TmrCitrine.Start();
             TmrRose.Start();
+            TmrTime.Enabled = true;
+
+
         }
 
         private void Menu_Stop_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void FrmCrystal_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void NameBtn_Click(object sender, EventArgs e)
@@ -155,6 +157,24 @@ namespace CrystalCollector
 
             }
 
+        }
+
+        private void TmrTime_Tick(object sender, EventArgs e)
+        {
+            time--;
+            LblTime.Text = time.ToString();
+            
+        }
+
+        private void BtnTime_Click(object sender, EventArgs e)
+        {
+            timelimit = LblTime.Text;           
+            time = int.Parse(comboBox1.SelectedIndex);
+            
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
 
         private void TmrCitrine_Tick(object sender, EventArgs e)
