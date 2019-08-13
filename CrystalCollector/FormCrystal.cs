@@ -46,11 +46,11 @@ namespace CrystalCollector
         }
         private void FrmCrystal_Load(object sender, EventArgs e)
         {
+            time = int.Parse(TxtTime.Text);
         }
 
         private void PanelGame_Paint(object sender, PaintEventArgs e)
-        {
-            //get the graphics used to paint on the panel control
+        {            //get the graphics used to paint on the panel control
             g = e.Graphics;
             //call the Planet class's DrawCollector method to draw the image collector1 
             collector1.drawCollector(g);
@@ -124,14 +124,15 @@ namespace CrystalCollector
 
         private void Menu_Start_Click(object sender, EventArgs e)
         {
-            score = 0;
-            tmrCollector.Start();
-            TmrAmethyst.Start();
-            TmrCitrine.Start();
-            TmrRose.Start();
-            TmrTime.Enabled = true;
-
-
+            if (TextName.Enabled == false)
+            {
+                score = 0;
+                tmrCollector.Start();
+                TmrAmethyst.Start();
+                TmrCitrine.Start();
+                TmrRose.Start();
+                TmrTime.Enabled = true;
+            }
         }
 
         private void Menu_Stop_Click(object sender, EventArgs e)
@@ -146,6 +147,8 @@ namespace CrystalCollector
             {
                 //if playerName valid (only letters) 
                 MessageBox.Show("Valid name, you can now start the game.");
+                TxtTime.Focus();
+                TextName.Enabled = false;
             }
             else
             {
@@ -157,20 +160,25 @@ namespace CrystalCollector
 
             }
 
+
         }
 
         private void TmrTime_Tick(object sender, EventArgs e)
         {
-            time--;
-            LblTime.Text = time.ToString();
-            
+            time--;        
         }
 
         private void BtnTime_Click(object sender, EventArgs e)
         {
-            timelimit = LblTime.Text;           
-            time = int.Parse(comboBox1.SelectedIndex);
-            
+            timelimit = TxtTime.Text;
+
+            TxtTime.Enabled = false;
+
+        }
+
+        private void TextName_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
