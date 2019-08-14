@@ -16,15 +16,18 @@ namespace CrystalCollector
     {
         Graphics g; //declare a graphics object called g
         Collector collector1 = new Collector(); //create the object, collector1
-        Amethyst[] amethyst = new Amethyst[5]; //create the object, amethyst
-        Citrine[] citrine = new Citrine[5];
-        Rosequartz[] rosequartz = new Rosequartz[5];
+        Amethyst[] amethyst = new Amethyst[4]; //create the object, amethyst
+        Citrine[] citrine = new Citrine[4];
+        Dodge[] dodge = new Dodge[4];
+        Rosequartz[] rosequartz = new Rosequartz[4];
         Random yspeed = new Random();
         Random xspeed = new Random();
         Random yspeeda = new Random();
         Random xspeeda = new Random();
         Random yspeedb = new Random();
         Random xspeedb = new Random();
+        Random yspeedc = new Random();
+        Random xspeedc = new Random();
         Random spawnx = new Random();
         Random spawny = new Random();
         int score, lives, diffX, diffY,time;
@@ -36,12 +39,13 @@ namespace CrystalCollector
             score = 0;
             InitializeComponent();
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PanelGame, new object[] { true });
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 int x = 10 + (i * 90);
                 amethyst[i] = new Amethyst(x);
                 citrine[i] = new Citrine(x);
                 rosequartz[i] = new Rosequartz(x);
+                dodge[i] = new Dodge(x);
             }
         }
         private void FrmCrystal_Load(object sender, EventArgs e)
@@ -50,28 +54,30 @@ namespace CrystalCollector
         }
 
         private void PanelGame_Paint(object sender, PaintEventArgs e)
-        {            //get the graphics used to paint on the panel control
+        {//get the graphics used to paint on the panel control
             g = e.Graphics;
             //call the Planet class's DrawCollector method to draw the image collector1 
             collector1.drawCollector(g);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 //call the Amethyst class's drawAmethyst method to draw the images
                 amethyst[i].drawAmethyst(g);
                 citrine[i].drawCitrine(g);
                 rosequartz[i].drawRosequartz(g);
+                dodge[i].drawDodge(g);
                 // generate a random number from 5 to 20 and put it in rndmspeed
                 int rndmyspeed = yspeed.Next(1, 5);
                 amethyst[i].y += rndmyspeed;
                 int rndmyspeeda = yspeeda.Next(1, 5);
                 citrine[i].y -= rndmyspeeda;
-
                 int rndmxspeed = xspeed.Next(1, 3);
                 amethyst[i].x += rndmxspeed;
                 int rndmxspeeda = xspeeda.Next(1, 3);
                 citrine[i].x -= rndmxspeeda;
                 int rndmxspeedb = xspeedb.Next(1, 5);
                 rosequartz[i].x += rndmxspeedb;
+                int rndmxspeedc = xspeedc.Next(1, 3);
+                dodge[i].x -= rndmxspeedc;
             }
 
         }
@@ -97,7 +103,8 @@ namespace CrystalCollector
                     score++;//add 1 to the score
                     LabelScore.Text = score.ToString();// display the score
                     a.y = 10;
-                    a.x = xplace; 
+                    a.x = xplace;
+                    checkTime();
                 }
             }
             foreach (Citrine a in citrine)
@@ -108,6 +115,7 @@ namespace CrystalCollector
                     LabelScore.Text = score.ToString();// display the score
                     a.y = 450;
                     a.x = xplace;
+                    checkTime();
                 }
             }
             foreach (Rosequartz a in rosequartz)
@@ -118,6 +126,7 @@ namespace CrystalCollector
                     LabelScore.Text = score.ToString();// display the score
                     a.x = 10;
                     a.y = yplace;
+                    checkTime();
                 }
             }
         }
@@ -127,11 +136,12 @@ namespace CrystalCollector
             if (TextName.Enabled == false)
             {
                 score = 0;
-                tmrCollector.Start();
-                TmrAmethyst.Start();
-                TmrCitrine.Start();
-                TmrRose.Start();
+                tmrCollector.Enabled = true;
+                TmrAmethyst.Enabled = true;
+                TmrCitrine.Enabled = true;
+                TmrRose.Enabled = true;
                 TmrTime.Enabled = true;
+                TmrDodge.Enabled = true;
             }
         }
 
@@ -165,7 +175,9 @@ namespace CrystalCollector
 
         private void TmrTime_Tick(object sender, EventArgs e)
         {
-            time--;        
+            time--;
+            LblTime.Text = time.ToString();
+            checkTime();
         }
 
         private void BtnTime_Click(object sender, EventArgs e)
@@ -174,6 +186,32 @@ namespace CrystalCollector
 
             TxtTime.Enabled = false;
 
+            if (TxtTime.Text == "30")
+            {
+                time = 30;
+                LblTime.Text = time.ToString();
+            }
+
+        }
+
+        private void TmrDodge_Tick(object sender, EventArgs e)
+        {
+            int yplace = spawny.Next(10, 460);
+            for (int i = 0; i < 4; i++)
+            {
+                dodge[i].moveDodge();
+            }
+            foreach (Dodge a in dodge)
+            {
+                if (collector1.collectorRec.IntersectsWith(a.dodgeRec))
+                {
+                    a.x = 670;
+                    a.y = yplace;
+                    score -= 3;
+                    LabelScore.Text = score.ToString();
+                    checkTime();
+                }
+            }
         }
 
         private void TextName_TextChanged(object sender, EventArgs e)
@@ -181,13 +219,9 @@ namespace CrystalCollector
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void TmrCitrine_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 citrine[i].moveCitrine();
             }
@@ -195,7 +229,7 @@ namespace CrystalCollector
 
         private void TmrRose_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 rosequartz[i].moveRosequartz();
             }
@@ -203,9 +237,22 @@ namespace CrystalCollector
 
         private void TmrAmethyst_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 amethyst[i].moveAmethyst();
+            }
+        }
+        private void checkTime()
+        {
+            if (time == 0)
+            {
+                tmrCollector.Enabled = false;
+                TmrAmethyst.Enabled = false;
+                TmrCitrine.Enabled = false;
+                TmrRose.Enabled = false;
+                TmrDodge.Enabled = false;
+
+                MessageBox.Show("Game Over. Thankyou for playing!");
             }
         }
     }

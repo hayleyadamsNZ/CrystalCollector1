@@ -50,6 +50,7 @@
             this.TmrTime = new System.Windows.Forms.Timer(this.components);
             this.BtnTime = new System.Windows.Forms.Button();
             this.TxtTime = new System.Windows.Forms.TextBox();
+            this.TmrDodge = new System.Windows.Forms.Timer(this.components);
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -237,6 +238,10 @@
             this.TxtTime.Size = new System.Drawing.Size(100, 29);
             this.TxtTime.TabIndex = 18;
             // 
+            // TmrDodge
+            // 
+            this.TmrDodge.Tick += new System.EventHandler(this.TmrDodge_Tick);
+            // 
             // FrmCrystal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,6 +297,7 @@
         private System.Windows.Forms.Timer TmrTime;
         private System.Windows.Forms.Button BtnTime;
         private System.Windows.Forms.TextBox TxtTime;
+        private System.Windows.Forms.Timer TmrDodge;
     }
 }
 
