@@ -51,6 +51,7 @@
             this.BtnTime = new System.Windows.Forms.Button();
             this.TxtTime = new System.Windows.Forms.TextBox();
             this.TmrDodge = new System.Windows.Forms.Timer(this.components);
+            this.BtnScores = new System.Windows.Forms.Button();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +72,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Orator Std", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 37);
+            this.label1.Location = new System.Drawing.Point(12, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 43);
             this.label1.TabIndex = 1;
@@ -91,7 +92,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(391, 119);
+            this.label3.Location = new System.Drawing.Point(274, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 25);
             this.label3.TabIndex = 3;
@@ -101,11 +102,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(482, 24);
+            this.label4.Location = new System.Drawing.Point(473, 24);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 25);
+            this.label4.Size = new System.Drawing.Size(199, 25);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Time";
+            this.label4.Text = "Time (30, 60, 90)";
             // 
             // TextName
             // 
@@ -122,7 +123,7 @@
             this.LabelScore.BackColor = System.Drawing.Color.White;
             this.LabelScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LabelScore.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelScore.Location = new System.Drawing.Point(464, 119);
+            this.LabelScore.Location = new System.Drawing.Point(347, 137);
             this.LabelScore.Name = "LabelScore";
             this.LabelScore.Size = new System.Drawing.Size(25, 27);
             this.LabelScore.TabIndex = 6;
@@ -166,8 +167,8 @@
             // Menu_Stop
             // 
             this.Menu_Stop.Name = "Menu_Stop";
-            this.Menu_Stop.Size = new System.Drawing.Size(43, 20);
-            this.Menu_Stop.Text = "Stop";
+            this.Menu_Stop.Size = new System.Drawing.Size(42, 20);
+            this.Menu_Stop.Text = "Quit";
             this.Menu_Stop.Click += new System.EventHandler(this.Menu_Stop_Click);
             // 
             // NameBtn
@@ -187,7 +188,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Orator Std", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 91);
+            this.label5.Location = new System.Drawing.Point(-6, 67);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(199, 43);
             this.label5.TabIndex = 10;
@@ -197,7 +198,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Orator Std", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(546, 91);
+            this.label7.Location = new System.Drawing.Point(481, 141);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 21);
             this.label7.TabIndex = 15;
@@ -207,10 +208,11 @@
             // 
             this.LblTime.AutoSize = true;
             this.LblTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LblTime.Font = new System.Drawing.Font("Orator Std", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTime.Location = new System.Drawing.Point(587, 119);
+            this.LblTime.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTime.ForeColor = System.Drawing.Color.Black;
+            this.LblTime.Location = new System.Drawing.Point(587, 137);
             this.LblTime.Name = "LblTime";
-            this.LblTime.Size = new System.Drawing.Size(22, 23);
+            this.LblTime.Size = new System.Drawing.Size(25, 27);
             this.LblTime.TabIndex = 16;
             this.LblTime.Text = "-";
             // 
@@ -221,26 +223,41 @@
             // 
             // BtnTime
             // 
-            this.BtnTime.Font = new System.Drawing.Font("Orator Std", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnTime.Location = new System.Drawing.Point(587, 53);
+            this.BtnTime.BackColor = System.Drawing.Color.Black;
+            this.BtnTime.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnTime.ForeColor = System.Drawing.Color.White;
+            this.BtnTime.Location = new System.Drawing.Point(587, 52);
             this.BtnTime.Name = "BtnTime";
-            this.BtnTime.Size = new System.Drawing.Size(50, 25);
+            this.BtnTime.Size = new System.Drawing.Size(65, 33);
             this.BtnTime.TabIndex = 17;
             this.BtnTime.Text = "Ok";
-            this.BtnTime.UseVisualStyleBackColor = true;
+            this.BtnTime.UseVisualStyleBackColor = false;
             this.BtnTime.Click += new System.EventHandler(this.BtnTime_Click);
             // 
             // TxtTime
             // 
-            this.TxtTime.Font = new System.Drawing.Font("Orator Std", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTime.Font = new System.Drawing.Font("Orator Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtTime.Location = new System.Drawing.Point(481, 52);
             this.TxtTime.Name = "TxtTime";
-            this.TxtTime.Size = new System.Drawing.Size(100, 29);
+            this.TxtTime.Size = new System.Drawing.Size(100, 33);
             this.TxtTime.TabIndex = 18;
             // 
             // TmrDodge
             // 
             this.TmrDodge.Tick += new System.EventHandler(this.TmrDodge_Tick);
+            // 
+            // BtnScores
+            // 
+            this.BtnScores.BackColor = System.Drawing.Color.Black;
+            this.BtnScores.Font = new System.Drawing.Font("Orator Std", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnScores.ForeColor = System.Drawing.Color.White;
+            this.BtnScores.Location = new System.Drawing.Point(12, 150);
+            this.BtnScores.Name = "BtnScores";
+            this.BtnScores.Size = new System.Drawing.Size(181, 36);
+            this.BtnScores.TabIndex = 19;
+            this.BtnScores.Text = "High Score List";
+            this.BtnScores.UseVisualStyleBackColor = false;
+            this.BtnScores.Click += new System.EventHandler(this.BtnScores_Click);
             // 
             // FrmCrystal
             // 
@@ -248,6 +265,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.BtnScores);
             this.Controls.Add(this.TxtTime);
             this.Controls.Add(this.BtnTime);
             this.Controls.Add(this.LblTime);
@@ -298,6 +316,7 @@
         private System.Windows.Forms.Button BtnTime;
         private System.Windows.Forms.TextBox TxtTime;
         private System.Windows.Forms.Timer TmrDodge;
+        private System.Windows.Forms.Button BtnScores;
     }
 }
 

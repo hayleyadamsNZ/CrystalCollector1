@@ -133,7 +133,7 @@ namespace CrystalCollector
 
         private void Menu_Start_Click(object sender, EventArgs e)
         {
-            if (TextName.Enabled == false)
+            if (TextName.Enabled == false && TxtTime.Enabled == false)
             {
                 score = 0;
                 tmrCollector.Enabled = true;
@@ -156,7 +156,6 @@ namespace CrystalCollector
             if (Regex.IsMatch(collectorName, @"^[a-zA-Z]+$"))//checks playerName for letters
             {
                 //if playerName valid (only letters) 
-                MessageBox.Show("Valid name, you can now start the game.");
                 TxtTime.Focus();
                 TextName.Enabled = false;
             }
@@ -184,12 +183,30 @@ namespace CrystalCollector
         {
             timelimit = TxtTime.Text;
 
-            TxtTime.Enabled = false;
-
             if (TxtTime.Text == "30")
             {
                 time = 30;
                 LblTime.Text = time.ToString();
+                TxtTime.Enabled = false;
+            }
+            if (TxtTime.Text == "60")
+            {
+                time = 60;
+                LblTime.Text = time.ToString();
+                TxtTime.Enabled = false;
+            }
+            if (TxtTime.Text == "90")
+            {
+                time = 90;
+                LblTime.Text = time.ToString();
+                TxtTime.Enabled = false;
+            }
+            if (TxtTime.Text != "30" && TxtTime.Text != "60" && TxtTime.Text != "90")
+            {
+                MessageBox.Show("NOT VALID. Please choose from 30, 60 or 90.");
+                TxtTime.Clear();
+                TxtTime.Focus();
+                TxtTime.Enabled = true;
             }
 
         }
@@ -217,6 +234,13 @@ namespace CrystalCollector
         private void TextName_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnScores_Click(object sender, EventArgs e)
+        {
+            HighScores HighScore2 = new HighScores(TextName.Text,LabelScore.Text);
+            Hide();
+            HighScore2.ShowDialog();
         }
 
         private void TmrCitrine_Tick(object sender, EventArgs e)
@@ -251,6 +275,7 @@ namespace CrystalCollector
                 TmrCitrine.Enabled = false;
                 TmrRose.Enabled = false;
                 TmrDodge.Enabled = false;
+                TmrTime.Enabled = false;
 
                 MessageBox.Show("Game Over. Thankyou for playing!");
             }
