@@ -115,7 +115,6 @@
             this.TextName.Name = "TextName";
             this.TextName.Size = new System.Drawing.Size(112, 33);
             this.TextName.TabIndex = 5;
-            this.TextName.TextChanged += new System.EventHandler(this.TextName_TextChanged);
             // 
             // LabelScore
             // 

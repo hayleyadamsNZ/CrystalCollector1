@@ -11,7 +11,7 @@ namespace CrystalCollector
     {
         // declare fields to use in the class
         public int x, y, width, height;//variables for the rectangle
-        public Image dodgeImage;//variable for the planet's image
+        public Image dodgeImage;//variable for the dodge's image
 
         public Rectangle dodgeRec;//variable for a rectangle to place our image in
         public int score;
@@ -26,7 +26,7 @@ namespace CrystalCollector
             dodgeImage = Image.FromFile("blue.png");
             dodgeRec = new Rectangle(x, y, width, height);
         }
-        // Methods for the Planet class
+        // Methods for the Dodge class
         public void drawDodge(Graphics g)
         {
             dodgeRec = new Rectangle(x, y, width, height);
@@ -35,12 +35,7 @@ namespace CrystalCollector
         public void moveDodge()
         {
             dodgeRec.Location = new Point(x, y);
-            if (dodgeRec.Location.Y < 1)
-            {
-                y = 450;
-                dodgeRec.Location = new Point(x, y);
-            }
-            if (dodgeRec.Location.X < 1)
+            if (dodgeRec.Location.X < 1) //if dodge's x position is less than 1 then reposition object to x = 670
             {
                 x = 670;
                 dodgeRec.Location = new Point(x, y);

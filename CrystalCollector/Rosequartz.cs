@@ -11,7 +11,7 @@ namespace CrystalCollector
     {
         // declare fields to use in the class
         public int x, y, width, height;//variables for the rectangle
-        public Image roseImage;//variable for the planet's image
+        public Image roseImage;//variable for the rosequartz's image
 
         public Rectangle roseRec;//variable for a rectangle to place our image in
         public int score;
@@ -26,7 +26,7 @@ namespace CrystalCollector
             roseImage = Image.FromFile("pink.png");
             roseRec = new Rectangle(x, y, width, height);
         }
-        // Methods for the Planet class
+        // Methods for the Rosequartz class
         public void drawRosequartz(Graphics g)
         {
             roseRec = new Rectangle(x, y, width, height);
@@ -35,7 +35,7 @@ namespace CrystalCollector
         public void moveRosequartz()
         {
             roseRec.Location = new Point(x, y);
-            if (roseRec.Location.X > 670)
+            if (roseRec.Location.X > 670) //if rosequartz's x position is more than 670 then reposition to x = 20
             {
                 x = 20;
                 roseRec.Location = new Point(x, y);
